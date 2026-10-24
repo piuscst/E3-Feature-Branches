@@ -1,11 +1,47 @@
 const portrait = document.querySelector<HTMLDivElement>("#portrait")!;
 const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 
+const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+const heaven = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "radialGradient",
+);
+heaven.setAttribute("id", "heaven");
+heaven.setAttribute("r", "75%");
+const glowCenter = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "stop",
+);
+glowCenter.setAttribute("offset", "45%");
+glowCenter.setAttribute("stop-color", "#ffffff");
+const glowEdge = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "stop",
+);
+glowEdge.setAttribute("offset", "100%");
+glowEdge.setAttribute("stop-color", "#f5a623");
+heaven.append(glowCenter, glowEdge);
+defs.append(heaven);
+
 // The prototype grew inline. Keep it this way until the refactoring checkpoint.
 const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 face.setAttribute("viewBox", "0 0 200 200");
 face.setAttribute("role", "img");
-face.setAttribute("aria-label", "A neutral face");
+face.setAttribute(
+  "aria-label",
+  "An excited collector grinning against a glowing yellow and white background",
+);
+
+const background = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "rect",
+);
+background.setAttribute("x", "0");
+background.setAttribute("y", "0");
+background.setAttribute("width", "200");
+background.setAttribute("height", "200");
+background.setAttribute("fill", "url(#heaven)");
+face.append(defs, background);
 
 const head = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
 head.setAttribute("cx", "100");
@@ -49,11 +85,9 @@ nose.setAttribute("stroke-width", "4");
 nose.setAttribute("stroke-linecap", "round");
 face.append(nose);
 
-const mouth = document.createElementNS("http://www.w3.org/2000/svg", "line");
-mouth.setAttribute("x1", "75");
-mouth.setAttribute("y1", "137");
-mouth.setAttribute("x2", "125");
-mouth.setAttribute("y2", "137");
+const mouth = document.createElementNS("http://www.w3.org/2000/svg", "path");
+mouth.setAttribute("d", "M 65 130 Q 100 170 135 130");
+mouth.setAttribute("fill", "none");
 mouth.setAttribute("stroke", "#302c29");
 mouth.setAttribute("stroke-width", "4");
 mouth.setAttribute("stroke-linecap", "round");
