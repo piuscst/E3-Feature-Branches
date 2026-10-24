@@ -25,3 +25,10 @@ Character: an excited trading-card collector who just pulled a very rare card.
 ## Choosing
 
 Criterion: which version best shows the excitement of the rare card pull
+
+## Decision
+
+I chose B (Assets) which is the collector holding a Charizard card and a toploader
+Why: It fits my criterion of which version best shows the excitement of the rare card pull because I would do the exact same thing of pulling out a toploader as fast as possible to protect the card from the elements so that it preserves its near mint value. While A and C properly shows the feeling, B is the most realistic actions that a collector would make.
+
+The other two branches will remain their own branches.
