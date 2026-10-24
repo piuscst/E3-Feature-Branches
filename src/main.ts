@@ -1,3 +1,9 @@
+// @deno-types="./asset-url.d.ts"
+import CharizardUrl from "./assets/charizard.jpg?no-inline";
+
+// @deno-types="./asset-url.d.ts"
+import ToploaderUrl from "./assets/toploader.png?no-inline";
+
 const portrait = document.querySelector<HTMLDivElement>("#portrait")!;
 const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 
@@ -5,7 +11,10 @@ function buildFace(): SVGSVGElement {
   const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   face.setAttribute("viewBox", "0 0 200 200");
   face.setAttribute("role", "img");
-  face.setAttribute("aria-label", "A neutral face");
+  face.setAttribute(
+    "aria-label",
+    "An excited collector holding up a Charizard card next to a toploader",
+  );
 
   const head = document.createElementNS(
     "http://www.w3.org/2000/svg",
@@ -61,6 +70,30 @@ function buildFace(): SVGSVGElement {
   mouth.setAttribute("stroke-width", "4");
   mouth.setAttribute("stroke-linecap", "round");
   face.append(mouth);
+
+  // charizard.jpg — source: Google, downloaded from a website I don't remember
+  const CharizardPic = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "image",
+  );
+  CharizardPic.setAttribute("href", CharizardUrl);
+  CharizardPic.setAttribute("x", "120");
+  CharizardPic.setAttribute("y", "110");
+  CharizardPic.setAttribute("width", "80");
+  CharizardPic.setAttribute("height", "80");
+  face.append(CharizardPic);
+
+  // toploader.png — source: Google, also downloaded from a website I don't remember
+  const ToploaderPic = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "image",
+  );
+  ToploaderPic.setAttribute("href", ToploaderUrl);
+  ToploaderPic.setAttribute("x", "0");
+  ToploaderPic.setAttribute("y", "110");
+  ToploaderPic.setAttribute("width", "80");
+  ToploaderPic.setAttribute("height", "80");
+  face.append(ToploaderPic);
 
   return face;
 }
